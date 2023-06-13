@@ -74,7 +74,7 @@ export const CostsOfProduction = (props) => {
   ];
   const [information, setInformation] = useState(data);
   const [products, setProducts] = useState("");
-  const [values, setValues] = useState(0);
+  const [values, setValues] = useState(1);
 
   const handleSelect = (e) => {
     const { value } = e.target;
@@ -86,6 +86,10 @@ export const CostsOfProduction = (props) => {
   const handleValues = (e) => {
     const { value } = e.target;
     setValues(value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     let dates = information
       .map((item) => item.ingredients)
       .reduce((acc, item) => {
@@ -94,23 +98,18 @@ export const CostsOfProduction = (props) => {
       }, {});
 
     let object1 = Object.fromEntries(
-      Object.entries(dates).map(([key, val]) => [key, val * value])
+      Object.entries(dates).map(([key, val]) => [key, val * values])
     );
 
     let test = information.map((item) => ({
       ...item,
       ingredients: object1,
     }));
-    console.log("test:", test);
     setInformation(test);
   };
+  const handleReset = () => {};
   console.log(information);
-  console.log(values);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
+  console.log("value:", values);
   return (
     <AppBar position="fixed" color="primary">
       <Toolbar>
@@ -146,6 +145,7 @@ export const CostsOfProduction = (props) => {
                 onChange={handleSelect}
                 required
               >
+                <MenuItem disabled>Seleccione el producto...</MenuItem>
                 <MenuItem value="Pan Frances">Pan Frances</MenuItem>
                 <MenuItem value="Pan Holandes">Pan Holandes</MenuItem>
                 <MenuItem value="Pan Campesino">Pan Campesinos</MenuItem>
@@ -157,6 +157,9 @@ export const CostsOfProduction = (props) => {
               onChange={handleValues}
               required
             />
+            <Button variant="contained" type="submit">
+              Resultado
+            </Button>
           </Container>
         </form>
         <Stack justifyContent={"center"}>
@@ -176,21 +179,37 @@ export const CostsOfProduction = (props) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {information.map((item) => {
-                  return (
-                    <TableRow key={item.id}>
-                      <TableCell>{item.name}</TableCell>
-                      <TableCell>{item.unidades}</TableCell>
-                      <TableCell>{item.peso}</TableCell>
-                      <TableCell>{item.ingredients?.harina}</TableCell>
-                      <TableCell>{item.ingredients?.azucar}</TableCell>
-                      <TableCell>{item.ingredients?.sal}</TableCell>
-                      <TableCell>{item.ingredients?.levadura}</TableCell>
-                      <TableCell>{item.ingredients?.mantequilla}</TableCell>
-                      <TableCell>{item.ingredients?.agua}</TableCell>
-                    </TableRow>
-                  );
-                })}
+                {(handleSubmit && handleValues == 0) || values == ""
+                  ? data.map((item) => {
+                      return (
+                        <TableRow key={item.id}>
+                          <TableCell>{item.name}</TableCell>
+                          <TableCell>{item.unidades}</TableCell>
+                          <TableCell>{item.peso}</TableCell>
+                          <TableCell>{item.ingredients?.harina}</TableCell>
+                          <TableCell>{item.ingredients?.azucar}</TableCell>
+                          <TableCell>{item.ingredients?.sal}</TableCell>
+                          <TableCell>{item.ingredients?.levadura}</TableCell>
+                          <TableCell>{item.ingredients?.mantequilla}</TableCell>
+                          <TableCell>{item.ingredients?.agua}</TableCell>
+                        </TableRow>
+                      );
+                    })
+                  : information.map((item) => {
+                      return (
+                        <TableRow key={item.id}>
+                          <TableCell>{item.name}</TableCell>
+                          <TableCell>{item.unidades}</TableCell>
+                          <TableCell>{item.peso}</TableCell>
+                          <TableCell>{item.ingredients?.harina}</TableCell>
+                          <TableCell>{item.ingredients?.azucar}</TableCell>
+                          <TableCell>{item.ingredients?.sal}</TableCell>
+                          <TableCell>{item.ingredients?.levadura}</TableCell>
+                          <TableCell>{item.ingredients?.mantequilla}</TableCell>
+                          <TableCell>{item.ingredients?.agua}</TableCell>
+                        </TableRow>
+                      );
+                    })}
               </TableBody>
             </Table>
           </TableContainer>
