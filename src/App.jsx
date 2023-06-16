@@ -1,9 +1,9 @@
-import { CostsOfProduction } from "../pages/CostsOfProduction";
+import { QuantiToProduce } from "../pages/QuantiToProduce";
 
-const App = (props) => {
+const App = () => {
   return (
     <>
-      <CostsOfProduction title={"hola pepito"} />
+      <QuantiToProduce />
     </>
   );
 };
