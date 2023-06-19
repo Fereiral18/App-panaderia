@@ -84,8 +84,8 @@ export const useCalculator = () => {
       ingredients: object1,
     }));
     setInformation(test);
-    setValues("");
     setProducts("");
+    setValues("");
   };
   return {
     information,

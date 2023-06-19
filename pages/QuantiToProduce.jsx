@@ -20,6 +20,7 @@ import {
 } from "@mui/material";
 import { useCalculator } from "../hooks/useCalculator";
 import { CostOfProduction } from "./CostOfProduction";
+import { Modals } from "./Modals";
 
 export const QuantiToProduce = (props) => {
   const {
@@ -30,36 +31,42 @@ export const QuantiToProduce = (props) => {
     information,
     values,
   } = useCalculator();
+
   return (
     <Container>
       <AppBar position="fixed" color="primary">
-        <Toolbar>
+        <Toolbar
+          sx={{
+            justifyContent: "center",
+          }}
+        >
           <Typography variant="h5">Calculadora de productos</Typography>
         </Toolbar>
         <Card
           sx={{
             ml: "5%",
             width: "90vw",
-            height: "70vh",
+            height: "100vh",
           }}
         >
-          <form onSubmit={handleSubmit}>
+          <form
+            style={{
+              width: "200px",
+            }}
+            onSubmit={handleSubmit}
+          >
             <Container
               sx={{
                 display: "flex",
-                height: "200px",
+                backgroundColor: "red",
                 flexDirection: "column",
+                ml: "0px",
+                height: "200px",
+                width: "230px",
                 justifyContent: "space-evenly",
-                alignItems: "center",
               }}
             >
-              <FormControl
-                sx={{
-                  mt: "20px",
-                  width: "250px",
-                }}
-                fullWidth
-              >
+              <FormControl size="small" sx={{ width: "180px" }}>
                 <InputLabel>Productos</InputLabel>
                 <Select
                   label="products"
@@ -75,19 +82,32 @@ export const QuantiToProduce = (props) => {
                 </Select>
               </FormControl>
               <TextField
-                sx={{ width: "250px" }}
+                size="small"
+                sx={{ width: "180px" }}
                 label="Cantidad de harina x kg"
                 value={values}
                 onChange={handleValues}
                 required
               />
-              <Button variant="contained" type="submit">
+              <Button
+                size="small"
+                sx={{
+                  width: "110px",
+                }}
+                variant="contained"
+                type="submit"
+              >
                 Resultado
               </Button>
             </Container>
           </form>
+
           <Stack justifyContent={"center"}>
-            <TableContainer sx={{ maxHeight: 440 }}>
+            <TableContainer
+              sx={{
+                maxHeight: 440,
+              }}
+            >
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
@@ -120,10 +140,11 @@ export const QuantiToProduce = (props) => {
                   })}
                 </TableBody>
               </Table>
+              <Modals />
+              <CostOfProduction information={information} />
             </TableContainer>
           </Stack>
         </Card>
-        <CostOfProduction information={information} />
       </AppBar>
     </Container>
   );
