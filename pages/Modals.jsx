@@ -1,12 +1,27 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Container, Grid, TextField } from "@mui/material";
 import { Modal } from "./Modal";
+import { useModal } from "../hooks/useModal";
 
 export const Modals = () => {
+  const [isOpen, openModal, closeModal] = useModal(false);
   return (
-    <>
-      <h2>Modales</h2>
-      <Button>Introducir costos</Button>
-      <Modal>
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Button
+        sx={{
+          display: "grid",
+          mt: "20px",
+        }}
+        variant="contained"
+        onClick={openModal}
+      >
+        Introducir costos
+      </Button>
+      <Modal isOpen={isOpen} closeModal={closeModal}>
         <Box
           sx={{
             display: "flex",
@@ -27,6 +42,6 @@ export const Modals = () => {
           <TextField placeholder="Mantequilla" label="Mantequilla" />
         </Box>
       </Modal>
-    </>
+    </Container>
   );
 };

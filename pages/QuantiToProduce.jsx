@@ -49,59 +49,64 @@ export const QuantiToProduce = (props) => {
             height: "100vh",
           }}
         >
-          <form
-            style={{
-              width: "200px",
+          <Container
+            sx={{
+              display: "flex",
+              justifyContent: "center",
             }}
-            onSubmit={handleSubmit}
           >
-            <Container
-              sx={{
-                display: "flex",
-                backgroundColor: "red",
-                flexDirection: "column",
-                ml: "0px",
-                height: "200px",
-                width: "230px",
-                justifyContent: "space-evenly",
+            <form
+              style={{
+                width: "200px",
               }}
+              onSubmit={handleSubmit}
             >
-              <FormControl size="small" sx={{ width: "180px" }}>
-                <InputLabel>Productos</InputLabel>
-                <Select
-                  label="products"
-                  id="demo-simple-select"
-                  value={products}
-                  onChange={handleSelect}
-                  required
-                >
-                  <MenuItem disabled>Seleccione el producto...</MenuItem>
-                  <MenuItem value="Pan Frances">Pan Frances</MenuItem>
-                  <MenuItem value="Pan Holandes">Pan Holandes</MenuItem>
-                  <MenuItem value="Pan Campesino">Pan Campesinos</MenuItem>
-                </Select>
-              </FormControl>
-              <TextField
-                size="small"
-                sx={{ width: "180px" }}
-                label="Cantidad de harina x kg"
-                value={values}
-                onChange={handleValues}
-                required
-              />
-              <Button
-                size="small"
+              <Container
                 sx={{
-                  width: "110px",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "200px",
+                  width: "230px",
+                  alignItems: "center",
+                  justifyContent: "space-evenly",
                 }}
-                variant="contained"
-                type="submit"
               >
-                Resultado
-              </Button>
-            </Container>
-          </form>
-
+                <FormControl size="small" sx={{ width: "180px" }}>
+                  <InputLabel>Productos</InputLabel>
+                  <Select
+                    label="products"
+                    id="demo-simple-select"
+                    value={products}
+                    onChange={handleSelect}
+                    required
+                  >
+                    <MenuItem disabled>Seleccione el producto...</MenuItem>
+                    <MenuItem value="Pan Frances">Pan Frances</MenuItem>
+                    <MenuItem value="Pan Holandes">Pan Holandes</MenuItem>
+                    <MenuItem value="Pan Campesino">Pan Campesinos</MenuItem>
+                  </Select>
+                </FormControl>
+                <TextField
+                  size="small"
+                  sx={{ width: "180px" }}
+                  label="Cantidad de harina x kg"
+                  value={values}
+                  onChange={handleValues}
+                  required
+                />
+                <Button
+                  size="small"
+                  sx={{
+                    width: "110px",
+                  }}
+                  variant="contained"
+                  type="submit"
+                >
+                  Resultado
+                </Button>
+              </Container>
+            </form>
+          </Container>
           <Stack justifyContent={"center"}>
             <TableContainer
               sx={{

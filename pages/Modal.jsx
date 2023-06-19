@@ -1,8 +1,8 @@
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import "./Modal.css";
-export const Modal = ({ children }) => {
+export const Modal = ({ children, isOpen, closeModal }) => {
   return (
-    <article className="modal is-open">
+    <article className={`modal ${isOpen && "is-open"}`}>
       <div className="modal-container">
         {children}
         <Button
@@ -12,6 +12,7 @@ export const Modal = ({ children }) => {
           }}
           className="modal-close"
           variant="contained"
+          onClick={closeModal}
         >
           Generar costos
         </Button>
