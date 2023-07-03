@@ -21,17 +21,6 @@
         "ingredients": {"harina" : 1000, "azucar" : 100, "sal": 20, "levadura": 20, "mantequilla": 40, "aceite": 20, "agua": 430},
         "peso": 400,
         "unidades": 4
-      },
-      {
-        "id":4,
-        "name" : "Materiales",
-        "harina": [{"cantidad": "", "costo": ""}],
-        "azucar": [{"cantidad": "", "costo": ""}],
-        "sal": [{"cantidad": "", "costo": ""}],
-        "levadura": [{"cantidad": "", "costo": ""}],
-        "mantequilla": [{"cantidad": "", "costo": ""}],
-        "aceite": [{"cantidad": "", "costo": ""}],
-        "huevos": [{"cantidad": "", "costo": ""}]
       }
     ]
 }

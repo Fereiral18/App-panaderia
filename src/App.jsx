@@ -1,4 +1,4 @@
-import { QuantiToProduce } from "../pages/QuantiToProduce";
+import { QuantiToProduce } from "../components/QuantiToProduce/QuantiToProduce";
 
 const App = () => {
   return (
