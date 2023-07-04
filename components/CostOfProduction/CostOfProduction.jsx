@@ -25,10 +25,24 @@ export const CostOfProduction = (props) => {
     <>
       <Toolbar
         sx={{
+          display: "flex",
           justifyContent: "start",
+          "@media(max-width: 500px)": {
+            justifyContent: "center",
+          },
         }}
       >
-        <Typography variant="h5" sx={{ color: "#1976d2" }}>
+        <Typography
+          variant="h5"
+          sx={{
+            color: "#1976d2",
+            "@media(max-width: 500px)": {
+              fontSize: "20px",
+              mt: "30px",
+              mb: "20px",
+            },
+          }}
+        >
           Costos de producción
         </Typography>
       </Toolbar>

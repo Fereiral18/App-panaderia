@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
 export const useCalculatorProducing = () => {
+  let weightFrances = Math.floor(1600 / 36);
+  console.log(weightFrances);
+
   const data = [
     {
       id: 1,
       name: "Pan Frances",
-      unidades: 32,
+      unidades: 36,
       ingredients: {
         harina: 1000,
         azucar: 100,
@@ -15,7 +18,7 @@ export const useCalculatorProducing = () => {
         aceite: 20,
         agua: 430,
       },
-      peso: 50,
+      peso: weightFrances,
     },
     {
       id: 2,

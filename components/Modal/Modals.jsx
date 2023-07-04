@@ -1,4 +1,4 @@
-import { Box, Button, Container, TextField } from "@mui/material";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { Modal } from "./Modal";
 
 export const Modals = (props) => {
@@ -10,12 +10,18 @@ export const Modals = (props) => {
       sx={{
         display: "flex",
         justifyContent: "end",
+        "@media(max-width: 500px)": {
+          justifyContent: "center",
+        },
       }}
     >
       <Button
         sx={{
-          display: "grid",
           mt: "20px",
+          "@media(max-width: 500px)": {
+            height: "35px",
+            fontSize: "10px",
+          },
           backgroundColor: "#007cea",
         }}
         variant="contained"
@@ -24,7 +30,16 @@ export const Modals = (props) => {
         Introducir costos
       </Button>
       <Modal isOpen={isOpen} closeModal={closeModal} table={table}>
-        <h3>Introduce pesos y costos de los productos: </h3>
+        <Typography
+          sx={{
+            "@media(max-width: 500px)": {
+              fontSize: "11px",
+              fontWeight: "bold",
+            },
+          }}
+        >
+          Introduce pesos y costos de los productos:{" "}
+        </Typography>
         <Container
           sx={{
             display: "flex",
@@ -44,12 +59,28 @@ export const Modals = (props) => {
               mb: "30px",
             }}
           >
-            <h3>Peso x producto en Gr :</h3>
+            <Typography
+              sx={{
+                "@media(max-width: 500px)": {
+                  fontSize: "11px",
+                  fontWeight: "bold",
+                },
+              }}
+            >
+              Peso x producto en Gr :
+            </Typography>
             {dataCosts.map((item, index) => (
               <div key={item.id}>
                 <TextField
                   size="small"
-                  sx={{ width: "180px" }}
+                  sx={{
+                    width: "180px",
+
+                    width: "180px",
+                    "@media(max-width: 500px)": {
+                      width: "80px",
+                    },
+                  }}
                   label={item.names}
                   type="text"
                   value={item.weight}
@@ -71,12 +102,26 @@ export const Modals = (props) => {
               mb: "30px",
             }}
           >
-            <h3>Costos por producto:</h3>
+            <Typography
+              sx={{
+                "@media(max-width: 500px)": {
+                  fontSize: "11px",
+                  fontWeight: "bold",
+                },
+              }}
+            >
+              Costos por producto:
+            </Typography>
             {dataCosts.map((item, index) => (
               <div key={item.id}>
                 <TextField
                   size="small"
-                  sx={{ width: "180px" }}
+                  sx={{
+                    width: "180px",
+                    "@media(max-width: 500px)": {
+                      width: "80px",
+                    },
+                  }}
                   label={item.names}
                   type="text"
                   value={item.costo}

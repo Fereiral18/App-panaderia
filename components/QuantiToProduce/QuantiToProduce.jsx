@@ -2,6 +2,7 @@ import {
   AppBar,
   Button,
   Card,
+  CircularProgress,
   Container,
   FormControl,
   InputLabel,
@@ -64,6 +65,7 @@ export const QuantiToProduce = (props) => {
     setShowCalculator(false);
   };
   const costoView = dataCosts.map((item) => item.costo)[0];
+
   console.log("esto:", costoView);
   return (
     <div className="general-container">
@@ -78,7 +80,7 @@ export const QuantiToProduce = (props) => {
         </div>
       ) : isLoading ? (
         <div className="loading-container">
-          <h1 className="loading">Cargando...</h1>
+          <CircularProgress size={"6rem"} />
         </div>
       ) : (
         <AppBar color="inherit">
@@ -88,6 +90,13 @@ export const QuantiToProduce = (props) => {
               height: "80px",
               backgroundColor: "#112438",
               justifyContent: "end",
+              "@media(max-width: 500px)": {
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignContent: "center",
+                height: "120px",
+              },
             }}
           >
             <Typography
@@ -96,6 +105,12 @@ export const QuantiToProduce = (props) => {
                 fontFamily: "fantasy",
                 fontSize: "4vh",
                 width: "600px",
+                "@media(max-width: 500px)": {
+                  display: "flex",
+                  justifyContent: "center",
+                  fontSize: "20px",
+                  width: "100vw",
+                },
               }}
             >
               Calculadora de producción
@@ -116,6 +131,10 @@ export const QuantiToProduce = (props) => {
               mt: "-100px",
               height: "111vh",
               backgroundColor: "#041b2d",
+              "@media(max-width: 500px)": {
+                display: "flex",
+                flexDirection: "column",
+              },
             }}
           >
             <Container
@@ -128,7 +147,14 @@ export const QuantiToProduce = (props) => {
                 border: "1px solid grey",
                 borderRadius: "2%",
                 width: "280px",
-                height: "400px",
+                height: "370px",
+                "@media(max-width: 500px)": {
+                  display: "flex",
+                  alignItems: "center",
+                  width: "180px",
+                  height: "150px",
+                  mt: "120px",
+                },
               }}
             >
               <form onSubmit={handleSubmit}>
@@ -136,13 +162,27 @@ export const QuantiToProduce = (props) => {
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    height: "200px",
+                    height: "220px",
                     width: "210px",
                     alignItems: "center",
                     justifyContent: "space-evenly",
+                    "@media(max-width: 500px)": {
+                      width: "190px",
+                      height: "150px",
+                    },
                   }}
                 >
-                  <FormControl size="small" sx={{ width: "180px" }}>
+                  <FormControl
+                    size="small"
+                    sx={{
+                      width: "210px",
+
+                      "@media(max-width: 500px)": {
+                        width: "120px",
+                        height: "40px",
+                      },
+                    }}
+                  >
                     <InputLabel>Productos</InputLabel>
                     <Select
                       label="products"
@@ -159,7 +199,13 @@ export const QuantiToProduce = (props) => {
                   </FormControl>
                   <TextField
                     size="small"
-                    sx={{ width: "180px" }}
+                    sx={{
+                      width: "210px",
+                      "@media(max-width: 500px)": {
+                        width: "120px",
+                        height: "40px",
+                      },
+                    }}
                     label="Cantidad de harina x kg"
                     value={values}
                     onChange={handleValues}
@@ -168,7 +214,14 @@ export const QuantiToProduce = (props) => {
                   <Button
                     size="small"
                     sx={{
-                      width: "110px",
+                      width: "125px",
+                      fontSize: "15px",
+                      mt: "30px",
+                      "@media(max-width: 500px)": {
+                        width: "70px",
+                        m: "0",
+                        fontSize: "10px",
+                      },
                       backgroundColor: "#007cea",
                     }}
                     variant="contained"
@@ -183,12 +236,22 @@ export const QuantiToProduce = (props) => {
               <Toolbar
                 sx={{
                   ml: "-50px",
+                  "@media(max-width: 500px)": {
+                    display: "flex",
+                    m: "0px",
+                    justifyContent: "center",
+                  },
                 }}
               >
                 <Typography
                   variant="h5"
                   sx={{
                     color: "#1976d2",
+                    "@media(max-width: 500px)": {
+                      fontSize: "20px",
+                      mt: "40px",
+                      mb: "10px",
+                    },
                   }}
                 >
                   Cantidad de producción por kg
@@ -198,6 +261,11 @@ export const QuantiToProduce = (props) => {
                 sx={{
                   maxHeight: 450,
                   ml: "-50px",
+                  "@media(max-width: 500px)": {
+                    m: "0px",
+                    width: "100vw",
+                    height: "100vh",
+                  },
                 }}
               >
                 <Table
@@ -206,14 +274,11 @@ export const QuantiToProduce = (props) => {
                   sx={{
                     border: "1px solid grey",
                     borderRadius: "2%",
+                    backgroundColor: "#f4f5f9",
                   }}
                 >
                   <TableHead>
-                    <TableRow
-                      sx={{
-                        alignItems: "center",
-                      }}
-                    >
+                    <TableRow>
                       <TableCell>Producto</TableCell>
                       <TableCell>Unidades</TableCell>
                       <TableCell>Peso x unidad</TableCell>
@@ -225,11 +290,7 @@ export const QuantiToProduce = (props) => {
                       <TableCell>Agua</TableCell>
                     </TableRow>
                   </TableHead>
-                  <TableBody
-                    sx={{
-                      backgroundColor: "#f4f5f9",
-                    }}
-                  >
+                  <TableBody>
                     {information.map((item) => {
                       return (
                         <TableRow key={item.id}>
