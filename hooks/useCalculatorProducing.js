@@ -1,65 +1,69 @@
 import React, { useState } from "react";
+import { useGetElements } from "./useGetElements";
 
 export const useCalculatorProducing = () => {
   let weightFrances = Math.floor(1600 / 36);
-  console.log(weightFrances);
 
-  const data = [
-    {
-      id: 1,
-      name: "Pan Frances",
-      unidades: 36,
-      ingredients: {
-        harina: 1000,
-        azucar: 100,
-        sal: 20,
-        levadura: 5,
-        mantequilla: 40,
-        aceite: 20,
-        agua: 430,
-      },
-      peso: weightFrances,
-    },
-    {
-      id: 2,
-      name: "Pan Holandes",
-      unidades: 35,
-      ingredients: {
-        harina: 1000,
-        azucar: 100,
-        sal: 20,
-        levadura: 5,
-        mantequilla: 40,
-        aceite: 20,
-        agua: 430,
-      },
-      peso: 45,
-    },
-    {
-      id: 3,
-      name: "Pan Campesino",
-      unidades: 4,
-      ingredients: {
-        harina: 1000,
-        azucar: 100,
-        sal: 20,
-        levadura: 5,
-        mantequilla: 40,
-        aceite: 20,
-        agua: 430,
-      },
-      peso: 400,
-    },
-  ];
-  const [information, setInformation] = useState(data);
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: "Pan Frances",
+  //     unidades: 36,
+  //     ingredients: {
+  //       harina: 1000,
+  //       azucar: 100,
+  //       sal: 20,
+  //       levadura: 5,
+  //       mantequilla: 40,
+  //       aceite: 20,
+  //       agua: 430,
+  //     },
+  //     peso: weightFrances,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Pan Holandes",
+  //     unidades: 35,
+  //     ingredients: {
+  //       harina: 1000,
+  //       azucar: 100,
+  //       sal: 20,
+  //       levadura: 5,
+  //       mantequilla: 40,
+  //       aceite: 20,
+  //       agua: 430,
+  //     },
+  //     peso: 45,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Pan Campesino",
+  //     unidades: 4,
+  //     ingredients: {
+  //       harina: 1000,
+  //       azucar: 100,
+  //       sal: 20,
+  //       levadura: 5,
+  //       mantequilla: 40,
+  //       aceite: 20,
+  //       agua: 430,
+  //     },
+  //     peso: 400,
+  //   },
+  // ];
+  const { materials } = useGetElements();
+
+  const [information, setInformation] = useState(materials);
   const [products, setProducts] = useState("");
   const [values, setValues] = useState("");
 
   const handleSelect = (e) => {
     const { value } = e.target;
     setProducts(value);
-    setInformation(data.filter((items) => items.name === value));
+    setInformation(materials.filter((items) => items.name === value));
   };
+  console.log("seleccion:", products);
+  console.log("informacion:", information);
 
   const handleValues = (e) => {
     const { value } = e.target;
@@ -121,9 +125,7 @@ export const useCalculatorProducing = () => {
   };
   // Cantidad de unidades
   const unitys = () => {
-    return information.map((item) =>
-      item.unidades < 40 ? null : item.unidades
-    );
+    return information.map(({ unidades }) => (unidades < 40 ? null : unidades));
   };
   // Costo por unidad
   const costOfUnity = () => {
