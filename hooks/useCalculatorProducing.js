@@ -55,7 +55,7 @@ export const useCalculatorProducing = () => {
 
   const [information, setInformation] = useState(materials);
   const [products, setProducts] = useState("");
-  const [values, setValues] = useState("");
+  const [values, setValues] = useState(null);
 
   const handleSelect = (e) => {
     const { value } = e.target;
@@ -127,7 +127,10 @@ export const useCalculatorProducing = () => {
   const unitys = () => {
     return information.map(({ unidades }) => (unidades < 40 ? null : unidades));
   };
-  // Costo por unidad
+
+  const weight = () => {
+    return information.map(({ peso }) => peso / 36);
+  }; // Costo por unidad
   const costOfUnity = () => {
     let totalCostUnity = totalExpenses() / unitys();
     return totalCostUnity == false ? null : totalCostUnity.toFixed(0);
@@ -160,6 +163,7 @@ export const useCalculatorProducing = () => {
     handleValues,
     handleInputChange,
     unitys,
+    weight,
     totalExpenses,
     totalProfit,
     profitPerUnit,

@@ -1,26 +1,49 @@
 {
-    "materiales": [
-      {
-        "id": 1,
-        "name": "Pan Frances",
-        "ingredients": {"harina" : 1000, "azucar" : 100, "sal": 20, "levadura": 20, "mantequilla": 40, "aceite": 20, "agua": 430},
-        "peso": "",
-        "unidades": 32
+  "materiales": [
+    {
+      "id": 1,
+      "name": "Pan Frances",
+      "ingredients": {
+        "harina": 1000,
+        "azucar": 100,
+        "sal": 20,
+        "levadura": 20,
+        "mantequilla": 40,
+        "aceite": 20,
+        "agua": 400
       },
-      {
-        "id": 2,
-        "name": "Pan Holandes",
-        "ingredients": 
-          {"harina" : 1000, "azucar" : 100, "sal": 20, "levadura": 20, "mantequilla": 40, "aceite": 20, "agua": 430},
-        "peso": "",
-        "unidades": 35
+      "peso": 1700,
+      "unidades": 32
+    },
+    {
+      "id": 2,
+      "name": "Pan Holandes",
+      "ingredients": {
+        "harina": 1000,
+        "azucar": 100,
+        "sal": 20,
+        "levadura": 20,
+        "mantequilla": 40,
+        "aceite": 20,
+        "agua": 400
       },
-      {
-        "id": 3,
-        "name": "Pan Campesino",
-        "ingredients": {"harina" : 1000, "azucar" : 100, "sal": 20, "levadura": 20, "mantequilla": 40, "aceite": 20, "agua": 430},
-        "peso": "",
-        "unidades": 4
-      }
-    ]
+      "peso": 1700,
+      "unidades": 35
+    },
+    {
+      "id": 3,
+      "name": "Pan Campesino",
+      "ingredients": {
+        "harina": 1000,
+        "azucar": 100,
+        "sal": 20,
+        "levadura": 20,
+        "mantequilla": 40,
+        "aceite": 20,
+        "agua": 400
+      },
+      "peso": 350,
+      "unidades": 4
+    }
+  ]
 }
